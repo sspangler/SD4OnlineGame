@@ -1,0 +1,30 @@
+Requirements:
+
+Character Ideas:
+-all have xp, hp, healthregen, attack, attackspeed, defense, movespeed
+-thief/rogue (fast, low power mid-range, secondary is mid-range poison blast?)
+-warrior (low-range high-power, shield for secondary that blocks X amount of damage/hits)
+-wizard (high-range, mid-power, secondary is long-range continuous beam)
+-bard (the white mage but not a white mage :P, secondary is the power of music [damages enemies, buffs players])
+-secondary attacks 
+
+Enemy Ideas:
+-types
+	*charge, projectile, AOE (probably for bosses)
+-bosses can create minions (lesser enemies)
+
+Item Ideas:
+-consumables (temp stat boosts), inventory size of 10
+-attack weapon
+-armor?
+
+Control Ideas:
+-use consumables (0-9)
+-movement: WASD
+-attacking: mouse aiming
+
+UI:
+-hp
+-equipped weapons?
+-isometric-orthographic
+
