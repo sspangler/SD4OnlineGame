@@ -4,6 +4,13 @@ using System.Collections;
 public class PlayerController : MonoBehaviour {
 
 	public float moveSpeed;
+	public int health;
+	public float attackSpeed;
+	public float damage;
+	public int numberOfProjectiles;
+	public float healthRegen;
+	public float defence;
+
 
 	// Use this for initialization
 	void Start () {
