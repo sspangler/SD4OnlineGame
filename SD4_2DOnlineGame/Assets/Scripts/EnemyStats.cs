@@ -12,14 +12,24 @@ public class EnemyStats : MonoBehaviour {
 
 	public float experience; //xp given to play on death
 
+	float diffMod;
 
 	// Use this for initialization
 	void Start () {
-	
+		health = health * diffMod;
+		healthRegen = healthRegen * diffMod;
+		moveSpeed = moveSpeed * diffMod;
+		Attack = Attack * diffMod;
+		attackSpeed = attackSpeed * diffMod;
+		defense = defense * diffMod;
+		experience = experience * diffMod;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 	
+		if (healthRegen != 0)
+			health += healthRegen * Time.deltaTime;
+
 	}
 }
