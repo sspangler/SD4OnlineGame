@@ -8,7 +8,6 @@ public class EnemyShooter : MonoBehaviour {
 	public GameObject projectile;
 
 	Vector3 target;
-	float moveSpeed;
 	float attackSpeed;
 	float attackCounter;
 	bool shoot;
@@ -16,7 +15,6 @@ public class EnemyShooter : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		enemyStats = GetComponent<EnemyStats> ();
-		moveSpeed = enemyStats.moveSpeed;
 		attackSpeed = enemyStats.attackSpeed;
 	}
 	
@@ -31,20 +29,22 @@ public class EnemyShooter : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D (Collider2D col) {
-		if (col.tag == "Player") {
+		if (col.tag == "Player" && col.GetType() == typeof(CircleCollider2D)) {
 			target = col.transform.position;
 			shoot = true;
 		}
 	}
 	
 	void OnTriggerStay2D (Collider2D col) {
-		if (col.tag == "Player" && !shoot) {
+		if (col.tag == "Player" && col.GetType() == typeof(CircleCollider2D)) {
 			target = col.transform.position;
 			shoot = true;
 		}
 	}
 
 	void SpawnProjectile () {
-		 Instantiate (projectile, transform.position, Quaternion.identity);
+		GameObject clone = (GameObject) Instantiate (projectile, transform.position, Quaternion.identity);
+		clone.GetComponent<Projectiles> ().target = target;
+		attackCounter = attackSpeed;
 	}
 }

@@ -7,7 +7,7 @@ public class EnemyBerserk : MonoBehaviour {
 
 	Vector3 target;
 	bool charge;
-	bool berserk;
+	public bool berserk;
 
 	float speed;
 	
@@ -21,30 +21,34 @@ public class EnemyBerserk : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (charge) {
-			transform.position = Vector3.MoveTowards (transform.position, target, 1f * Time.deltaTime);
+			transform.position = Vector3.MoveTowards (transform.position, target, speed * Time.deltaTime);
 			if (transform.position == target)
 				charge = false;
 		}
 
 		if (enemyStats.health <= 4 && !berserk) {
 			berserk = true;
-			speed += 5;
-			enemyStats.healthRegen += 5;
+			speed += .5f;
+			enemyStats.healthRegen += 1f;
 			enemyStats.Attack += 2;
 			enemyStats.defense = 0;
+			print("asdf");
 		}
+
+		if (enemyStats.health < 10)
+			enemyStats.health += enemyStats.healthRegen * Time.deltaTime;
 
 	}
 
 	void OnTriggerEnter2D (Collider2D col) {
-		if (col.tag == "Player") {
+		if (col.tag == "Player" && col.GetType() == typeof(CircleCollider2D)) {
 			target = col.transform.position;
 			charge = true;
 		}
 	}
 	
 	void OnTriggerStay2D (Collider2D col) {
-		if (col.tag == "Player" && !charge) {
+		if (col.tag == "Player" && !charge && col.GetType() == typeof(CircleCollider2D)) {
 			target = col.transform.position;
 			charge = true;
 		}

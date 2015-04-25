@@ -19,21 +19,21 @@ public class EnemyCharge : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (charge) {
-			transform.position = Vector3.MoveTowards (transform.position, target, 1f * Time.deltaTime);
+			transform.position = Vector3.MoveTowards (transform.position, target, speed * Time.deltaTime);
 			if (transform.position == target)
 				charge = false;
 		}
 	}
 
 	void OnTriggerEnter2D (Collider2D col) {
-		if (col.tag == "Player") {
+		if (col.tag == "Player" && col.GetType() == typeof(CircleCollider2D)) {
 			target = col.transform.position;
 			charge = true;
 		}
 	}
 
 	void OnTriggerStay2D (Collider2D col) {
-		if (col.tag == "Player" && !charge) {
+		if (col.tag == "Player" && !charge && col.GetType() == typeof(CircleCollider2D)) {
 			target = col.transform.position;
 			charge = true;
 		}
