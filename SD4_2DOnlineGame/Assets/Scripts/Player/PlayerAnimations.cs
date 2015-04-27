@@ -9,36 +9,78 @@ public class PlayerAnimations : MonoBehaviour {
     /// -1, 1 = side (west, east)
     /// 0 = front (south)
     /// </summary>
-    int animDir;
+    public int animDir;
 
     Animator anim;
+    bool isRight;
+
+    playercontroller playerInfo;
 
     void Awake() {
         //Gets Animator component
         if (GetComponent<Animator>() != null)
             anim = GetComponent<Animator>();
+
+        //Gets playercontroller component
+        if (GetComponent<playercontroller>() != null)
+            playerInfo = GetComponent<playercontroller>();
     }
 
 	// Use this for initialization
 	void Start () {
-	
+        isRight = true;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        spriteDirection();
+        updateAnimDir();
+        updateSpriteAnimation();
 	}
 
-    void spriteDirection() {
+    void updateAnimDir() {
+        if (Input.GetKey(KeyCode.W))
+        {
+            animDir = 2;
+        }
+
+        if (Input.GetKey(KeyCode.S))
+        {
+            animDir = 0;
+        }
+
+        if (Input.GetKey(KeyCode.D))
+        {
+            animDir = 1;
+
+            if (!isRight) updateSpriteDirection();
+        }
+
+        if (Input.GetKey(KeyCode.A))
+        {
+            animDir = -1;
+
+            if (isRight) updateSpriteDirection();
+        }
+    }
+
+    void updateSpriteDirection() {
+        isRight = !isRight;
+
         //Get the current scale of the transform
         Vector3 currScale = transform.localScale;
 
-        //If player is facing left or right,
-        //set the X-scale to face proper direction based on animDir
-        if (animDir ==- 1 || animDir == 1) 
-            currScale.x *= animDir;
+        //Set the X-scale to face oppositer direction
+        currScale.x *= -1;
 
         //Set the scale of the player transform to the altered currScale
         transform.localScale = currScale;
+    }
+
+    void updateSpriteAnimation() {
+        //Tells animator the current animation direction
+        anim.SetInteger("animDir", animDir);
+
+        //Tells animator if the player is moving or not
+        anim.SetBool("isMoving", playerInfo.isMoving);
     }
 }
