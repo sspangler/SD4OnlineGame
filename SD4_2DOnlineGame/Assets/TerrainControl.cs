@@ -61,32 +61,32 @@ public class TerrainControl : MonoBehaviour {
 			}
 			
 			
-			if (player.transform.position.z -tempPosition.z >= 300) {
+			if (player.transform.position.y -tempPosition.y >= 300) {
 				
-				tempPosition.z += 600;
+				tempPosition.y += 600;
 				
 				terrains[x].transform.position = tempPosition;
 				
 			}
 			
-			if (player.transform.position.z - tempPosition.z < -300) {
-				tempPosition.z -=600;
+			if (player.transform.position.y - tempPosition.y < -300) {
+				tempPosition.y -=600;
 				terrains[x].transform.position = tempPosition;
 				
 			}
-			
+
 			
 			// CHECK THE DISTANCES OF THE MOVED TILES IN ORDER TO DETERMINE THE MATERIALS THAT SHOULD BE APPLIED
 			if (Mathf.Abs (terrains[x].transform.position.x - origin.position.x) >= 1600 || Mathf.Abs (terrains[x].transform.position.z - origin.position.z) >= 1600) {
 				rend[x].material = materials [z4[x]]; 
 				
-			} else if ((Mathf.Abs (terrains[x].transform.position.x - origin.position.x) >= 1200 && Mathf.Abs (terrains[x].transform.position.x - origin.position.x) < 1600) || (Mathf.Abs (terrains[x].transform.position.z - origin.position.z) >= 1200 && Mathf.Abs (terrains[x].transform.position.z - origin.position.z) < 1600)) {
+			} else if ((Mathf.Abs (terrains[x].transform.position.x - origin.position.x) >= 1200 && Mathf.Abs (terrains[x].transform.position.x - origin.position.x) < 1600) || (Mathf.Abs (terrains[x].transform.position.y - origin.position.y) >= 1200 && Mathf.Abs (terrains[x].transform.position.y - origin.position.y) < 1600)) {
 				//rend.material.color = Color.black;
 				rend[x].material = materials [z4[x]]; 
-			} else if ((Mathf.Abs (terrains[x].transform.position.x - origin.position.x) >= 800 && Mathf.Abs (terrains[x].transform.position.x - origin.position.x) < 1200) || (Mathf.Abs (terrains[x].transform.position.z - origin.position.z) >= 800 && Mathf.Abs (terrains[x].transform.position.z - origin.position.z) < 1200)) {
+			} else if ((Mathf.Abs (terrains[x].transform.position.x - origin.position.x) >= 800 && Mathf.Abs (terrains[x].transform.position.x - origin.position.x) < 1200) || (Mathf.Abs (terrains[x].transform.position.y - origin.position.y) >= 800 && Mathf.Abs (terrains[x].transform.position.y - origin.position.y) < 1200)) {
 				//rend.material.color = Color.red;
 				rend[x].material = materials [z3[x]]; 	
-			} else if ((Mathf.Abs (terrains[x].transform.position.x - origin.position.x) >= 400 && Mathf.Abs (terrains[x].transform.position.x - origin.position.x) < 800) || (Mathf.Abs (terrains[x].transform.position.z - origin.position.z) >= 400 && Mathf.Abs (terrains[x].transform.position.z - origin.position.z) < 800)) {
+			} else if ((Mathf.Abs (terrains[x].transform.position.x - origin.position.x) >= 400 && Mathf.Abs (terrains[x].transform.position.x - origin.position.x) < 800) || (Mathf.Abs (terrains[x].transform.position.y - origin.position.y) >= 400 && Mathf.Abs (terrains[x].transform.position.y - origin.position.y) < 800)) {
 				//rend.material.color = Color.blue;
 				rend[x].material = materials [z2[x]]; 
 				
@@ -103,12 +103,12 @@ public class TerrainControl : MonoBehaviour {
 		
 		Zone ();
 	}
-	
+
 	void Zone ()
 	{
 		
 		
-		zdist = Mathf.Abs( player.position.z - origin.transform.position.z);
+		zdist = Mathf.Abs( player.position.y - origin.transform.position.y);
 		xdist = Mathf.Abs (player.position.x - origin.transform.position.x);
 		
 		

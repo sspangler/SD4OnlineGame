@@ -16,10 +16,10 @@ if (Input.GetKey(KeyCode.A)) {
 			transform.position += Vector3.right * moveSpeed * Time.deltaTime;
 		}
 		if (Input.GetKey(KeyCode.W)) {
-			transform.position += Vector3.forward * moveSpeed * Time.deltaTime;
+			transform.position += Vector3.up * moveSpeed * Time.deltaTime;
 		}
 		if (Input.GetKey(KeyCode.S)) {
-			transform.position += Vector3.back * moveSpeed * Time.deltaTime;
+			transform.position += Vector3.down * moveSpeed * Time.deltaTime;
 		}
 
 }
