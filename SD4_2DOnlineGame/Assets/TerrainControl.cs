@@ -60,43 +60,12 @@ public class TerrainControl : MonoBehaviour {
 				tempPosition.x += 600;
 				terrains[x].transform.position = tempPosition;
 
-				for (int i = 0; i < minionsToSpawn; i++) {
-					int rand = Random.Range(0,minions.Length);
-					Vector3 randomIn = Random.insideUnitSphere * 100;
-					randomIn.z = -1;
-					GameObject clone = (GameObject) Instantiate(minions[rand], tempPosition + randomIn, Quaternion.identity);
-					clone.GetComponent<EnemyStats>().diffMod = difficultyZone;
-				}
-
-				for (int i = 0; i < bossesToSpawn; i++) {
-					int rand = Random.Range(0,bosses.Length);
-					Vector3 randomIn = Random.insideUnitSphere * 100;
-					randomIn.z = -1;
-					GameObject clone = (GameObject) Instantiate(bosses[rand], tempPosition + randomIn, Quaternion.identity);
-					clone.GetComponent<EnemyStats>().diffMod = difficultyZone;
-				}
-
 			}
 			
 			if (player.transform.position.x - tempPosition.x < -300) {
 				tempPosition.x -=600;
 				terrains[x].transform.position = tempPosition;
 
-				for (int i = 0; i < minionsToSpawn; i++) {
-					int rand = Random.Range(0,minions.Length);
-					Vector3 randomIn = Random.insideUnitSphere * 100;
-					randomIn.z = -1;
-					GameObject clone = (GameObject) Instantiate(minions[rand], tempPosition + randomIn, Quaternion.identity);
-					clone.GetComponent<EnemyStats>().diffMod = difficultyZone;
-				}
-
-				for (int i = 0; i < bossesToSpawn; i++) {
-					int rand = Random.Range(0,bosses.Length);
-					Vector3 randomIn = Random.insideUnitSphere * 100;
-					randomIn.z = -1;
-					GameObject clone = (GameObject) Instantiate(bosses[rand], tempPosition + randomIn, Quaternion.identity);
-					clone.GetComponent<EnemyStats>().diffMod = difficultyZone;
-				}
 			}
 			
 			
@@ -104,44 +73,27 @@ public class TerrainControl : MonoBehaviour {
 				tempPosition.y += 600;
 				terrains[x].transform.position = tempPosition;
 
-				for (int i = 0; i < minionsToSpawn; i++) {
-					int rand = Random.Range(0,minions.Length);
-					Vector3 randomIn = Random.insideUnitSphere * 100;
-					randomIn.z = -1;
-					GameObject clone = (GameObject) Instantiate(minions[rand], tempPosition + randomIn, Quaternion.identity);
-					clone.GetComponent<EnemyStats>().diffMod = difficultyZone;
-				}
-
-				for (int i = 0; i < bossesToSpawn; i++) {
-					int rand = Random.Range(0,bosses.Length);
-					Vector3 randomIn = Random.insideUnitSphere * 100;
-					randomIn.z = -1;
-					GameObject clone = (GameObject) Instantiate(bosses[rand], tempPosition + randomIn, Quaternion.identity);
-					clone.GetComponent<EnemyStats>().diffMod = difficultyZone;
-				}
-				
 			}
 			
 			if (player.transform.position.y - tempPosition.y < -300) {
 				tempPosition.y -=600;
 				terrains[x].transform.position = tempPosition;
 
-				for (int i = 0; i < minionsToSpawn; i++) {
-					int rand = Random.Range(0,minions.Length);
-					Vector3 randomIn = Random.insideUnitSphere * 100;
-					randomIn.z = -1;
-					GameObject clone = (GameObject) Instantiate(minions[rand], tempPosition + randomIn, Quaternion.identity);
-					clone.GetComponent<EnemyStats>().diffMod = difficultyZone;
-				}
-
-				for (int i = 0; i < bossesToSpawn; i++) {
-					int rand = Random.Range(0,bosses.Length);
-					Vector3 randomIn = Random.insideUnitSphere * 100;
-					randomIn.z = -1;
-					GameObject clone = (GameObject) Instantiate(bosses[rand], tempPosition + randomIn, Quaternion.identity);
-					clone.GetComponent<EnemyStats>().diffMod = difficultyZone;
-				}
-				
+//				for (int i = 0; i < minionsToSpawn; i++) {
+//					int rand = Random.Range(0,minions.Length);
+//					Vector3 randomIn = Random.insideUnitSphere * 100;
+//					randomIn.z = -1;
+//					GameObject clone = (GameObject) Instantiate(minions[rand], tempPosition + randomIn, Quaternion.identity);
+//					clone.GetComponent<EnemyStats>().diffMod = difficultyZone;
+//				}
+//
+//				for (int i = 0; i < bossesToSpawn; i++) {
+//					int rand = Random.Range(0,bosses.Length);
+//					Vector3 randomIn = Random.insideUnitSphere * 100;
+//					randomIn.z = -1;
+//					GameObject clone = (GameObject) Instantiate(bosses[rand], tempPosition + randomIn, Quaternion.identity);
+//					clone.GetComponent<EnemyStats>().diffMod = difficultyZone;
+//				}
 			}
 
 			
@@ -165,7 +117,6 @@ public class TerrainControl : MonoBehaviour {
 				rend[x].material = materials [z1[x]]; 
 				
 			}
-
 		}
 		
 		Zone ();
