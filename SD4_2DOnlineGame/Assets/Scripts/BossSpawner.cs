@@ -35,13 +35,13 @@ public class BossSpawner : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D (Collider2D col) {
-		if (col.tag == "Player" && col.GetType() == typeof(CircleCollider2D)) {
+		if (col.tag == "Player") {
 			spawning = true;
 		}
 	}
 
 	void OnTriggerExit2D (Collider2D col) {
-		if (col.tag == "Player" && col.GetType() == typeof(CircleCollider2D)) {
+		if (col.tag == "Player") {
 			spawning = false;
 		}
 	}

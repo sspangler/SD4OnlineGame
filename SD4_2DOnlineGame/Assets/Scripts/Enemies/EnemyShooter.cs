@@ -29,14 +29,14 @@ public class EnemyShooter : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D (Collider2D col) {
-		if (col.tag == "Player" && col.GetType() == typeof(CircleCollider2D)) {
+		if (col.tag == "Player") {
 			target = col.transform.position;
 			shoot = true;
 		}
 	}
 	
 	void OnTriggerStay2D (Collider2D col) {
-		if (col.tag == "Player" && col.GetType() == typeof(CircleCollider2D)) {
+		if (col.tag == "Player") {
 			target = col.transform.position;
 			shoot = true;
 		}

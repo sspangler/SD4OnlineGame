@@ -32,14 +32,14 @@ public class EnemyFlee : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D (Collider2D col) {
-		if (col.tag == "Player" && col.GetType() == typeof(CircleCollider2D)) {
+		if (col.tag == "Player") {
 			direction = col.transform.position - transform.position;
 			run = true;
 		}
 	}
 	
 	void OnTriggerStay2D (Collider2D col) {
-		if (col.tag == "Player" && counter <= 0 && col.GetType() == typeof(CircleCollider2D)) {
+		if (col.tag == "Player" && counter <= 0) {
 			direction = col.transform.position - transform.position;
 			run = true;
 			counter = 2f;

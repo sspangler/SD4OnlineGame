@@ -3,6 +3,7 @@ using System.Collections;
 
 public class EnemyStats : MonoBehaviour {
 
+	public bool isBoss;
 	public float health;
 	public float healthRegen;
 	public float moveSpeed;
@@ -16,6 +17,14 @@ public class EnemyStats : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		if (isBoss) {
+			health = health * 1.5f;
+			healthRegen = healthRegen * 1.2f;
+			Attack = Attack * 1.5f;
+			attackSpeed = attackSpeed * 1.2f;
+			defense = defense * 1.25f;
+		}
+
 		health = health * diffMod;
 		healthRegen = healthRegen * diffMod;
 		moveSpeed = moveSpeed * diffMod;

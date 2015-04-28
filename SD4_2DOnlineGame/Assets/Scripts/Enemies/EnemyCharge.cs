@@ -26,14 +26,14 @@ public class EnemyCharge : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D (Collider2D col) {
-		if (col.tag == "Player" && col.GetType() == typeof(CircleCollider2D)) {
+		if (col.tag == "Player") {
 			target = col.transform.position;
 			charge = true;
 		}
 	}
 
 	void OnTriggerStay2D (Collider2D col) {
-		if (col.tag == "Player" && !charge && col.GetType() == typeof(CircleCollider2D)) {
+		if (col.tag == "Player") {
 			target = col.transform.position;
 			charge = true;
 		}
