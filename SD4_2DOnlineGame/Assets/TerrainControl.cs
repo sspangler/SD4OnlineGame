@@ -16,7 +16,7 @@ public class TerrainControl : MonoBehaviour {
 	public Renderer [] rend = new Renderer[9];
 	
 	
-	public float zdist = 0;
+	public float ydist = 0;
 	public float xdist = 0;
 	public int difficultyZone = 0;
 	
@@ -27,10 +27,10 @@ public class TerrainControl : MonoBehaviour {
 			
 			//INITIALIZE TILES
 			rend [x] = terrains [x].GetComponent<Renderer> ();
-			z1 [x] = (int)Random.Range (0f, 3f); 
-			z2 [x] = (int)Random.Range (4f, 5f);
-			z3 [x] = (int)Random.Range (6f, 7f);
-			z4 [x] = (int)Random.Range (8f, 9f);
+			z1 [x] = (int)Random.Range (0, 4); 
+			z2 [x] = (int)Random.Range (4, 6);
+			z3 [x] = (int)Random.Range (6, 8);
+			z4 [x] = (int)Random.Range (8, 10);
 			rend[x].material = materials [z1[x]]; //SET INITIAL MATERIALS TO ZONE 1
 		}
 		
@@ -108,27 +108,27 @@ public class TerrainControl : MonoBehaviour {
 	{
 		
 		
-		zdist = Mathf.Abs( player.position.y - origin.transform.position.y);
+		ydist = Mathf.Abs( player.position.y - origin.transform.position.y);
 		xdist = Mathf.Abs (player.position.x - origin.transform.position.x);
 		
 		
 		//SET THE DIFFICULTY ZONE BASED UPON THIS DISTANCE (OTHER SCRIPTS WILL USE THE DIFFICULTY ZONE TO DETERMINE THE DIFFICULTY OF ENEMIES)
-		if ((xdist >= 1100 && xdist < 1500) || (zdist >= 1100 && zdist < 1500))
+		if ((xdist >= 1100 && xdist < 1500) || (ydist >= 1100 && ydist < 1500))
 		{
 			
 			difficultyZone = 4;
 		}
-		else if ((xdist >= 700 && xdist < 1100) || (zdist >= 700 && zdist < 1100) )
+		else if ((xdist >= 700 && xdist < 1100) || (ydist >= 700 && ydist < 1100) )
 		{
 			
 			difficultyZone = 3;
 		} 
-		else if ((xdist >= 300 && xdist < 700) || (zdist >= 300 && zdist < 700) )
+		else if ((xdist >= 300 && xdist < 700) || (ydist >= 300 && ydist < 700) )
 		{
 			
 			difficultyZone = 2;
 		}
-		else if (xdist < 300 || zdist < 300)
+		else if (xdist < 300 || ydist < 300)
 		{ 
 			
 			
