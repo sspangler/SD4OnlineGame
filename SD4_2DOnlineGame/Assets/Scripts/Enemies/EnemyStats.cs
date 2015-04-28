@@ -13,7 +13,8 @@ public class EnemyStats : MonoBehaviour {
 
 	public float experience; //xp given to play on death
 
-	float diffMod = 1;
+	[HideInInspector]
+	public float diffMod = 1;
 
 	// Use this for initialization
 	void Start () {
