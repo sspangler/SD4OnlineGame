@@ -12,6 +12,7 @@ public class TerrainControl : MonoBehaviour {
 	public int [] z2 = new int [9]; 
 	public int [] z3 = new int [9];
 	public int [] z4 = new int [9];
+	public int [] tileTex = new int[25];
 	public GameObject[] terrains;
 	public Renderer [] rend;
 	
@@ -39,9 +40,52 @@ public class TerrainControl : MonoBehaviour {
 
 		for (int x = 0; x< 25; x++) {
 			
-			
-			rend[x].material = materials [(int)Random.Range (0, 10)];
+
+			tileTex[x] = (int)Random.Range (0, 10);
+			rend[x].material = materials [tileTex[x]];
 		}
+
+
+
+
+
+
+		ydist = Mathf.Abs( player.position.y - origin.transform.position.y);
+		xdist = Mathf.Abs (player.position.x - origin.transform.position.x);
+		
+		
+		//SET THE DIFFICULTY ZONE BASED UPON THIS DISTANCE (OTHER SCRIPTS WILL USE THE DIFFICULTY ZONE TO DETERMINE THE DIFFICULTY OF ENEMIES)
+		if ((xdist >= 1100 && xdist < 1500) || (ydist >= 1100 && ydist < 1500))
+		{
+			
+			difficultyZone = 4;
+		}
+		else if ((xdist >= 700 && xdist < 1100) || (ydist >= 700 && ydist < 1100) )
+		{
+			
+			difficultyZone = 3;
+		} 
+		else if ((xdist >= 300 && xdist < 700) || (ydist >= 300 && ydist < 700) )
+		{
+			
+			difficultyZone = 2;
+		}
+		else if (xdist < 300 || ydist < 300)
+		{ 
+			
+			
+			difficultyZone = 1;
+		}
+		
+		
+		
+		
+	}
+
+
+
+
+
 
 		
 	}
