@@ -3,9 +3,10 @@ using System.Collections;
 
 public class playercontroller : MonoBehaviour {
 
-    public float level, currEXP, nextLevelEXP;
-    public float currVitality, vitality, healthRegen;
-    public float power, atkSpd, def, moveSpd;
+    public int level, currEXP, nextLevelEXP;
+    public int currVitality, vitality;
+    public float healthRegen;
+    public int power, atkSpd, def, moveSpd;
 	public float tempTime;
 	
 	public GameObject bullet;
@@ -42,7 +43,7 @@ public class playercontroller : MonoBehaviour {
 	    //Read character stats from save file
         level = charSave.iarray[1];
         currEXP = charSave.iarray[2];
-        nextLevelEXP = Mathf.Pow(level, 2f);    //Change to represent experience needed for current level
+        nextLevelEXP = (int)Mathf.Pow(level, 2f);    //Change to represent experience needed for current level
         vitality = charSave.iarray[3];
         currVitality = vitality;
 		power = charSave.iarray[4];
@@ -63,47 +64,17 @@ public class playercontroller : MonoBehaviour {
 		
 		if (tempTime >= atkSpd)
 		{
-			if (Input.GetMouseButton (0)) 
-				
+			if (Input.GetMouseButton (0)) 	
 			{
-				
 				GameObject clone = (GameObject) Instantiate (bullet, transform.position, Quaternion.identity);
 				
 				tempTime = 0;
 			}
 		}
-
-
-
-
 	}
 
     void MovePlayer()
     {
-        //if (Input.GetKey(KeyCode.W))
-        //{
-        //    transform.position += Vector3.up * moveSpeed * Time.deltaTime;
-        //    isMoving = true;
-        //}
-
-        //if (Input.GetKey(KeyCode.S))
-        //{
-        //    transform.position += Vector3.down * moveSpeed * Time.deltaTime;
-        //    isMoving = true;
-        //}
-
-        //if (Input.GetKey(KeyCode.D))
-        //{
-        //    transform.position += Vector3.right * moveSpeed * Time.deltaTime;
-        //    isMoving = true;
-        //}
-
-        //if (Input.GetKey(KeyCode.A))
-        //{
-        //    transform.position += Vector3.left * moveSpeed * Time.deltaTime;
-        //    isMoving = true;
-        //}
-
         //Read horizontal input (-1 for left, 1 for right, 0 for none)
         float horizontal = Input.GetAxis("Horizontal");
 
@@ -129,11 +100,28 @@ public class playercontroller : MonoBehaviour {
         Mathf.Clamp(currEXP, 0, nextLevelEXP);
     }
 
+    void LevelUp() {
+        if (currEXP >= nextLevelEXP) {
+            //Get experience needed for current level
+            float prevLevelEXP = Mathf.Pow(level, 2f);
+
+            //Add any leftover experience after level up to current experience
+            if (currEXP > nextLevelEXP)
+                currEXP = (int) prevLevelEXP - currEXP;
+
+            //Increment level and find new amount of experience needed to level up
+            level++;
+            nextLevelEXP = (int) Mathf.Pow(level, 2f);
+        }
+    }
+
+
+
 	void OnCollisionEnter2D (Collision2D col) {
 		print (col.gameObject.name);
 		if (col.gameObject.tag == "Enemy") {
 			if (IFrames<= 0) {
-				currVitality -= col.gameObject.GetComponent<EnemyStats>().Attack;
+				currVitality -= (int)col.gameObject.GetComponent<EnemyStats>().Attack;
 				if (currVitality <= 0) {
 					Application.LoadLevel("Spash");			
 				}
@@ -143,7 +131,7 @@ public class playercontroller : MonoBehaviour {
 
 		} else if (col.gameObject.tag == "Enemybullet") {
 			if (IFrames <= 0) {
-				currVitality -= col.gameObject.GetComponent<Projectiles>().power;
+				currVitality -= (int)col.gameObject.GetComponent<Projectiles>().power;
 				if (currVitality <= 0)
 				{
 					Application.LoadLevel("Spash");

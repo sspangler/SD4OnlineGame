@@ -4,7 +4,7 @@ using System.Collections;
 public class EnemyCharge : MonoBehaviour {
 
 	public EnemyStats enemyStats;
-    [Tooltip("This variable is used to specify if this eenmy uses the base charge enemy images.")]
+    [Tooltip("This variable is used to specify if this enemy uses the base charge enemy images.")]
     public bool isBaseCharge;
 
     EnemyAnimations ea;
@@ -14,8 +14,7 @@ public class EnemyCharge : MonoBehaviour {
 
 	float speed;
 
-    void Awake()
-    {
+    void Awake() {
         //Get the enemy animation control script 
         if (GetComponentInChildren<EnemyAnimations>() != null)
             ea = GetComponentInChildren<EnemyAnimations>();
@@ -40,8 +39,7 @@ public class EnemyCharge : MonoBehaviour {
 		}
 	}
 
-    void updateAnimation()
-    {
+    void updateAnimation() {
         //Tells enemy animaiton controller whether it is moving or not
        ea.setMoving(charge);
 
