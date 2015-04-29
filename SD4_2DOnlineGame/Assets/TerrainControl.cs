@@ -31,53 +31,24 @@ public class TerrainControl : MonoBehaviour {
 	void Start () 
 	{	
 		//terrains = GameObject.FindGameObjectsWithTag("Terrain");
-		for (int x = 0; x< 9; x++) {
-			
-			//INITIALIZE TILES
-			rend [x] = terrains [x].GetComponent<Renderer> ();
-			z1 [x] = (int)Random.Range (0, 4); 
-			z2 [x] = (int)Random.Range (4, 6);
-			z3 [x] = (int)Random.Range (6, 8);
-			z4 [x] = (int)Random.Range (8, 10);
-			rend[x].material = materials [z1[x]]; //SET INITIAL MATERIALS TO ZONE 1
-		}
-		
+
 		
 		//INITIALIZE OBJECTS TO BE USED IN REFERENCE TO DISTANCE
 		origin = GameObject.FindGameObjectWithTag("Origin").transform; 
 		player = GameObject.FindGameObjectWithTag("Player").transform;
+
+		for (int x = 0; x< 25; x++) {
+			
+			
+			rend[x].material = materials [(int)Random.Range (0, 10)];
+		}
+
 		
 	}
 	
 	void Update ()
 	{
-		for (int x = 0; x<9; x++) {
-			
-			Vector3 tempPosition = terrains[x].transform.position;
-			//CHECKS THE X AND Z POSITIONS TO SEE IF THE TILE NEEDS TO MOVE (USED TO CREATE PSEUDO-INFINITE TERRAIN	
-			
-			if (player.transform.position.x - tempPosition.x >= 300) {
-				tempPosition.x += 600;
-				terrains[x].transform.position = tempPosition;
 
-			}
-			
-			if (player.transform.position.x - tempPosition.x < -300) {
-				tempPosition.x -=600;
-				terrains[x].transform.position = tempPosition;
-
-			}
-			
-			
-			if (player.transform.position.y -tempPosition.y >= 300) {	
-				tempPosition.y += 600;
-				terrains[x].transform.position = tempPosition;
-
-			}
-			
-			if (player.transform.position.y - tempPosition.y < -300) {
-				tempPosition.y -=600;
-				terrains[x].transform.position = tempPosition;
 
 //				for (int i = 0; i < minionsToSpawn; i++) {
 //					int rand = Random.Range(0,minions.Length);
@@ -94,31 +65,11 @@ public class TerrainControl : MonoBehaviour {
 //					GameObject clone = (GameObject) Instantiate(bosses[rand], tempPosition + randomIn, Quaternion.identity);
 //					clone.GetComponent<EnemyStats>().diffMod = difficultyZone;
 //				}
-			}
+
 
 			
 			// CHECK THE DISTANCES OF THE MOVED TILES IN ORDER TO DETERMINE THE MATERIALS THAT SHOULD BE APPLIED
-			if (Mathf.Abs (terrains[x].transform.position.x - origin.position.x) >= 1600 || Mathf.Abs (terrains[x].transform.position.z - origin.position.z) >= 1600) {
-				rend[x].material = materials [z4[x]]; 
-				
-			} else if ((Mathf.Abs (terrains[x].transform.position.x - origin.position.x) >= 1200 && Mathf.Abs (terrains[x].transform.position.x - origin.position.x) < 1600) || (Mathf.Abs (terrains[x].transform.position.y - origin.position.y) >= 1200 && Mathf.Abs (terrains[x].transform.position.y - origin.position.y) < 1600)) {
-				//rend.material.color = Color.black;
-				rend[x].material = materials [z4[x]]; 
-			} else if ((Mathf.Abs (terrains[x].transform.position.x - origin.position.x) >= 800 && Mathf.Abs (terrains[x].transform.position.x - origin.position.x) < 1200) || (Mathf.Abs (terrains[x].transform.position.y - origin.position.y) >= 800 && Mathf.Abs (terrains[x].transform.position.y - origin.position.y) < 1200)) {
-				//rend.material.color = Color.red;
-				rend[x].material = materials [z3[x]]; 	
-			} else if ((Mathf.Abs (terrains[x].transform.position.x - origin.position.x) >= 400 && Mathf.Abs (terrains[x].transform.position.x - origin.position.x) < 800) || (Mathf.Abs (terrains[x].transform.position.y - origin.position.y) >= 400 && Mathf.Abs (terrains[x].transform.position.y - origin.position.y) < 800)) {
-				//rend.material.color = Color.blue;
-				rend[x].material = materials [z2[x]]; 
-				
-			} else if (Mathf.Abs (terrains[x].transform.position.x - origin.position.x) < 400 || Mathf.Abs (terrains[x].transform.position.z - origin.position.z) < 400) { 
-				
-				//rend.material.color = Color.green;
-				rend[x].material = materials [z1[x]]; 
-				
-			}
-		}
-		
+			
 		Zone ();
 	}
 
