@@ -41,8 +41,8 @@ public class UI_GameMode : MonoBehaviour {
         hpBar.image.fillAmount = playerInfo.currHealth / playerInfo.health;
 
         //Setting text strings to display attack, defense and speed
-        statDisplay[0].text = "ATK - ";
-        statDisplay[1].text = "DEF - ";
-        statDisplay[2].text = "SPD - ";
+        statDisplay[0].text = "ATK - " + playerInfo.Attack;
+        statDisplay[1].text = "DEF - " + playerInfo.defense;
+        statDisplay[2].text = "SPD - " + playerInfo.moveSpeed;
     }
 }

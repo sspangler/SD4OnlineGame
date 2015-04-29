@@ -52,6 +52,7 @@ public class PlayerAnimations : MonoBehaviour {
         {
             animDir = 1;
 
+            //Update sprite direction if facing left
             if (!isRight) updateSpriteDirection();
         }
 
@@ -59,6 +60,7 @@ public class PlayerAnimations : MonoBehaviour {
         {
             animDir = -1;
 
+            //Update sprite direction if facing right
             if (isRight) updateSpriteDirection();
         }
     }
@@ -77,10 +79,13 @@ public class PlayerAnimations : MonoBehaviour {
     }
 
     void updateSpriteAnimation() {
-        //Tells animator the current animation direction
-        anim.SetInteger("animDir", animDir);
+        if (anim != null)
+        {
+            //Tells animator the current animation direction
+            anim.SetInteger("animDir", animDir);
 
-        //Tells animator if the player is moving or not
-        anim.SetBool("isMoving", playerInfo.isMoving);
+            //Tells animator if the player is moving or not
+            anim.SetBool("isMoving", playerInfo.isMoving);
+        }
     }
 }

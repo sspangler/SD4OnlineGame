@@ -10,7 +10,7 @@ public class playercontroller : MonoBehaviour {
     public float attackSpeed;
     public float defense;
 
-    public bool isMoving;
+    public bool isMoving, isAttacking;
 
 	// Use this for initialization
 	void Start () {
@@ -60,4 +60,14 @@ public class playercontroller : MonoBehaviour {
                                           vertical * moveSpeed * Time.deltaTime,
                                           0);
     }
+
+    //void ActivateAttack() {
+    //    bool atk = Input.GetMouseButtonDown(0);
+
+    //    if (!isAttacking && atk) isAttacking = true;
+    //}
+
+    //public void endAttack() {
+    //    isAttacking = false;
+    //}
 }
