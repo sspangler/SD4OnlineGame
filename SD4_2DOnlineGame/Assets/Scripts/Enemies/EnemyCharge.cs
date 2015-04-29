@@ -4,6 +4,8 @@ using System.Collections;
 public class EnemyCharge : MonoBehaviour {
 
 	public EnemyStats enemyStats;
+    [Tooltip("This variable is used to specify if this eenmy uses the base charge enemy images.")]
+    public bool isBaseCharge;
 
     EnemyAnimations ea;
 
@@ -28,7 +30,8 @@ public class EnemyCharge : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         //Updates the animation informatino for this enemy
-        updateAnimation();
+        if (isBaseCharge)
+            updateAnimation();
 
 		if (charge) {
 			transform.position = Vector3.MoveTowards (transform.position, target, speed * Time.deltaTime);
