@@ -39,4 +39,18 @@ public class EnemyStats : MonoBehaviour {
 	void Update () {
 
 	}
+
+
+	void OnCollisionEnter2D (Collision2D col) {
+		if (col.gameObject.tag == "PlayerBullet") {
+			GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+			health -= col.gameObject.GetComponent<playerBullet>().damage;
+			if (health <= 0)
+			{
+				Destroy(gameObject);
+			}
+			Destroy(col.gameObject);
+		}
+	}
+
 }

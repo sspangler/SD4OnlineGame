@@ -43,7 +43,7 @@ public class EnemyCharge : MonoBehaviour {
     void updateAnimation()
     {
         //Tells enemy animaiton controller whether it is moving or not
-        ea.setMoving(charge);
+       ea.setMoving(charge);
 
         //Tells enemy animation controller to change direction as needed
         if (ea.getDirection() == true && target.x < transform.position.x ||
@@ -56,6 +56,8 @@ public class EnemyCharge : MonoBehaviour {
 			target = col.transform.position;
 			charge = true;
 		}
+
+		
 	}
 
 	void OnTriggerStay2D (Collider2D col) {

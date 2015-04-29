@@ -12,6 +12,8 @@ public class playercontroller : MonoBehaviour {
 
     public bool isMoving;
 
+	public float IFrames;
+
     /*
      * Important info:
      * iarray - array that holds character stats
@@ -34,13 +36,16 @@ public class playercontroller : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
+		IFrames = .5f;
+
 	    //Read character stats from save file
         level = charSave.iarray[1];
         currEXP = charSave.iarray[2];
         nextLevelEXP = Mathf.Pow(level, 2f);    //Change to represent experience needed for current level
         vitality = charSave.iarray[3];
         currVitality = vitality;
-        power = charSave.iarray[4];
+		power = charSave.iarray[4];
         atkSpd = charSave.iarray[5];
         def = charSave.iarray[6];
         moveSpd = charSave.iarray[7];
@@ -51,7 +56,8 @@ public class playercontroller : MonoBehaviour {
         MovePlayer();
         ValueCorrection();
 
-
+		if (IFrames >= 0)
+			IFrames -= Time.deltaTime;
 		
 		tempTime += Time.deltaTime;
 		
@@ -122,4 +128,30 @@ public class playercontroller : MonoBehaviour {
         Mathf.Clamp(currVitality, 0, vitality);
         Mathf.Clamp(currEXP, 0, nextLevelEXP);
     }
+
+	void OnCollisionEnter2D (Collision2D col) {
+		print (col.gameObject.name);
+		if (col.gameObject.tag == "Enemy") {
+			if (IFrames<= 0) {
+				currVitality -= col.gameObject.GetComponent<EnemyStats>().Attack;
+				if (currVitality <= 0) {
+					Application.LoadLevel("Spash");			
+				}
+				Destroy(col.gameObject);
+				IFrames = .5f;
+			}
+
+		} else if (col.gameObject.tag == "Enemybullet") {
+			if (IFrames <= 0) {
+				currVitality -= col.gameObject.GetComponent<Projectiles>().power;
+				if (currVitality <= 0)
+				{
+					Application.LoadLevel("Spash");
+				}
+				Destroy(col.gameObject);
+				IFrames = .5f;
+			}
+		}
+	}
+
 }

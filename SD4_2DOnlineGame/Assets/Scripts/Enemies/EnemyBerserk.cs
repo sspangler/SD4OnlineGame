@@ -32,7 +32,6 @@ public class EnemyBerserk : MonoBehaviour {
 			enemyStats.healthRegen += 1f;
 			enemyStats.Attack += 2;
 			enemyStats.defense = 0;
-			print("asdf");
 		}
 
 		if (enemyStats.health < 10)
@@ -45,6 +44,7 @@ public class EnemyBerserk : MonoBehaviour {
 			target = col.transform.position;
 			charge = true;
 		}
+
 	}
 	
 	void OnTriggerStay2D (Collider2D col) {
@@ -53,4 +53,6 @@ public class EnemyBerserk : MonoBehaviour {
 			charge = true;
 		}
 	}
+
+
 }

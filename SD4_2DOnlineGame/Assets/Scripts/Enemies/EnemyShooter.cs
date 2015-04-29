@@ -45,6 +45,7 @@ public class EnemyShooter : MonoBehaviour {
 	void SpawnProjectile () {
 		GameObject clone = (GameObject) Instantiate (projectile, transform.position, Quaternion.identity);
 		clone.GetComponent<Projectiles> ().target = target;
+		clone.GetComponent<Projectiles> ().power = enemyStats.Attack;
 		attackCounter = attackSpeed;
 	}
 }

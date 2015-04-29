@@ -5,22 +5,25 @@ public class playerBullet : MonoBehaviour {
 	
 	
 	float liveTime = 1.3f;
-	Vector3 target;
-	float angle;
-	Vector3 direction;
-	float damage;
+	//Vector3 target;
+	//float angle;
+	//Vector3 direction;
+	public float damage;
 	Vector3 dir;
 	Vector3 sp;
 	bool adjust = true;
 	
-	
+	public GameObject player;
+	public playercontroller playerScript;
+
 	void Start () {
 		
-		target = Camera.main.ScreenToWorldPoint (Input.mousePosition);
-		direction = (target - transform.position);
-		GameObject player = GameObject.Find ("Player");	
-		playercontroller playerScript = player.GetComponent<playercontroller>();
+		//target = Camera.main.ScreenToWorldPoint (Input.mousePosition);
+		//direction = (target - transform.position);
+		player = GameObject.FindGameObjectWithTag ("Player");	
+		playerScript = player.GetComponent<playercontroller>();
 		damage = playerScript.power;
+
 		
 		
 		
