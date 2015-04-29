@@ -5,23 +5,36 @@ using UnityEngine.UI;
 public class UI_GameMode : MonoBehaviour {
 	
 	public Text [] statDisplay;
-    public Button hpBar;
+    public Image hpBarColor, expBarColor;
+    public Text expBarTxt;
 
     public playercontroller playerInfo;
+    /*
+     * Important info:
+     * iarray - array that holds character stats
+     *          index 1 = level
+     *          index 2 = experience?
+     *          index 3 = vitality
+     *          index 4 = power
+     *          index 5 = atk speed
+     *          index 6 = defense
+     *          index 7 = move speed
+     **/
+    //usave_file charSave;
 
 	void Awake () {
 		//Get Text components if not already set
-		if (statDisplay == null && 
+		if (statDisplay.Length == 0 && 
 		    GetComponentsInChildren<Text>() != null)
 			statDisplay = GetComponentsInChildren<Text>();
 
         //Get HP bar if not already set
-        if (hpBar == null &&
-            GetComponentsInChildren<Button>() != null)
-            hpBar = GetComponentInChildren<Button>();
+        //if (hpBarColor == null &&
+        //    this.transform.Find(transform.name + "/HP_Bar/HP_Bar_Color").GetComponent<Image>() != null)
+        //    hpBarColor = this.transform.Find(transform.name + "/HP_Bar/HP_Bar_Color").GetComponent<Image>();
 
         //Gets playercontroller component on player GameObject
-        if (playerInfo == null && 
+        if (playerInfo == null &&
             GameObject.FindGameObjectWithTag("Player").GetComponent<playercontroller>() != null)
             playerInfo = GameObject.FindGameObjectWithTag("Player").GetComponent<playercontroller>();
 	}
@@ -38,11 +51,16 @@ public class UI_GameMode : MonoBehaviour {
 
     void updatePlayerStats() {
         //Setting HP bar to show remaining HP
-        hpBar.image.fillAmount = playerInfo.currHealth / playerInfo.health;
+        hpBarColor.fillAmount = playerInfo.currVitality / playerInfo.vitality;
+        
+        //Set experience bar to show accumulated exp for the current level
+        expBarColor.fillAmount = playerInfo.currEXP / playerInfo.nextLevelEXP;
+        expBarTxt.text = "LV" + playerInfo.level.ToString();
 
         //Setting text strings to display attack, defense and speed
-        statDisplay[0].text = "ATK - " + playerInfo.Attack;
-        statDisplay[1].text = "DEF - " + playerInfo.defense;
-        statDisplay[2].text = "SPD - " + playerInfo.moveSpeed;
+        statDisplay[0].text = "PWR - " + playerInfo.power;
+        statDisplay[1].text = "AtkSpd - " + playerInfo.atkSpd;
+        statDisplay[2].text = "DEF - " + playerInfo.def;
+        statDisplay[3].text = "SPD - " + playerInfo.moveSpd;
     }
 }

@@ -9,7 +9,7 @@ public class PlayerAnimations : MonoBehaviour {
     /// -1, 1 = side (west, east)
     /// 0 = front (south)
     /// </summary>
-    public int animDir;
+    int animDir;
 
     Animator anim;
     bool isRight;
@@ -38,16 +38,19 @@ public class PlayerAnimations : MonoBehaviour {
 	}
 
     void updateAnimDir() {
+        //Player presses Up
         if (Input.GetKey(KeyCode.W))
         {
             animDir = 2;
         }
 
+        //Player presses Down
         if (Input.GetKey(KeyCode.S))
         {
             animDir = 0;
         }
 
+        //Player presses Right
         if (Input.GetKey(KeyCode.D))
         {
             animDir = 1;
@@ -56,6 +59,7 @@ public class PlayerAnimations : MonoBehaviour {
             if (!isRight) updateSpriteDirection();
         }
 
+        //Player presses Left
         if (Input.GetKey(KeyCode.A))
         {
             animDir = -1;
