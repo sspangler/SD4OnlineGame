@@ -55,7 +55,7 @@ public class gameManager : MonoBehaviour {
 		 */
         //Warrior
 		if (selectedClass == 0) {
-			float[] stats = {selectedClass, 1f, 0f, 25f, 4f, 7f, 2f, 8f, 20f};
+			float[] stats = {selectedClass, 1f, 0f, 19f, 3f, 7f, 2f, 10f, 20f};
 			charSave.iarray = stats;
 			charSave.sarray [0] = name;
 			charSave.slot = selectedChar;
@@ -64,7 +64,7 @@ public class gameManager : MonoBehaviour {
         //Thief
         else
 		if (selectedClass == 1) {
-			float[] stats = {selectedClass, 1f, 0f, 10f, 1f, 4f, 1f, 15f, 20f};
+			float[] stats = {selectedClass, 1f, 0f, 10f, 1f, 5f, 0f, 14f, 20f};
 			charSave.iarray = stats;
 			charSave.sarray [0] = name;
 			charSave.slot = selectedChar;
@@ -73,7 +73,7 @@ public class gameManager : MonoBehaviour {
         //Wizard
         else
 			if (selectedClass == 2) {
-			float[] stats = {selectedClass, 1f, 0f, 15f, 6f, 8f, 1f, 10f, 20f};
+			float[] stats = {selectedClass, 1f, 0f, 13f, 4f, 8f, 0f, 8f, 20f};
 			charSave.iarray = stats;
 			charSave.sarray [0] = name;
 			charSave.slot = selectedChar;
@@ -81,7 +81,7 @@ public class gameManager : MonoBehaviour {
 		} 
         //Bard
         else if (selectedClass == 3) {
-			float[] stats = {selectedClass, 1f, 0f, 12f, 3f, 6f, 1f, 12f, 20f};
+			float[] stats = {selectedClass, 1f, 0f, 16f, 2f, 6f, 1f, 12f, 20f};
 			charSave.iarray = stats;
 			charSave.sarray [0] = name;
 			charSave.slot = selectedChar;

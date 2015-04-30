@@ -107,6 +107,8 @@ public class playercontroller : MonoBehaviour {
 	void Update () {
         MovePlayer();
         ValueCorrection();
+        LevelUp();
+
 		if (currVitality<=0)
 		{
 			charSave.deleteFile();
@@ -191,7 +193,7 @@ public class playercontroller : MonoBehaviour {
                     switch (i) {
                         //Vitality increase
                         case 0:
-                            vitality += 3;
+                            vitality += 2;
                             currVitality = vitality;
                             break;
                         //Power increase
@@ -261,33 +263,33 @@ public class playercontroller : MonoBehaviour {
                 //Warrior
                 case 0:
                     modifyPercent[0] += 0.35f;
-                    modifyPercent[1] += 0.25f;
-                    modifyPercent[2] -= 0.3f;
-                    modifyPercent[3] -= 0.1f;
-                    modifyPercent[4] -= 0.4f;
+                    modifyPercent[1] += 0.15f;
+                    modifyPercent[2] -= 0.05f;
+                    modifyPercent[3] -= 0.05f;
+                    modifyPercent[4] += 0.05f;
                     break;
                 //Thief
                 case 1:
-                    modifyPercent[0] -= 0.3f;
+                    modifyPercent[0] -= 0.1f;
                     modifyPercent[1] -= 0.25f;
-                    modifyPercent[2] += 0.15f;
-                    modifyPercent[3] -= 0.45f;
-                    modifyPercent[4] += 0.4f;
+                    modifyPercent[2] -= 0.35f;
+                    modifyPercent[3] -= 0.3f;
+                    modifyPercent[4] += 0.3f;
                     break;
                 //Wizard
                 case 2:
-                    modifyPercent[0] -= 0.25f;
+                    modifyPercent[0] -= 0.15f;
                     modifyPercent[1] += 0.4f;
-                    modifyPercent[2] -= 0.15f;
-                    modifyPercent[3] -= 0.35f;
-                    modifyPercent[4] -= 0.2f;
+                    modifyPercent[2] += 0.05f;
+                    modifyPercent[3] -= 0.2f;
+                    modifyPercent[4] -= 0.25f;
                     break;
                 //Bard
                 case 3:
                     modifyPercent[0] += 0.1f;
                     modifyPercent[1] -= 0.1f;
-                    modifyPercent[2] += 0.1f;
-                    modifyPercent[3] -= 0.25f;
+                    modifyPercent[2] -= 0.05f;
+                    modifyPercent[3] -= 0.15f;
                     modifyPercent[4] += 0.1f;
                     break;
                 default: break;
@@ -305,9 +307,9 @@ public class playercontroller : MonoBehaviour {
                 int dmg = (int)col.gameObject.GetComponent<EnemyStats>().Attack - def;
                 if (dmg < 1) dmg = 1;
                 currVitality -= dmg;
-				if (currVitality <= 0) {
-					Application.LoadLevel("Splash");		
-				}
+                //if (currVitality <= 0) {
+                //    Application.LoadLevel("Splash");		
+                //}
 				//Destroy(col.gameObject);
 				IFrames = .5f;
 			}
@@ -317,10 +319,10 @@ public class playercontroller : MonoBehaviour {
                 int dmg = (int)col.gameObject.GetComponent<Projectiles>().power - def;
                 if (dmg < 1) dmg = 1;
                 currVitality -= dmg;
-				if (currVitality <= 0)
-				{
-					Application.LoadLevel("Splash");
-				}
+                //if (currVitality <= 0)
+                //{
+                //    Application.LoadLevel("Splash");
+                //}
 				Destroy(col.gameObject);
 				IFrames = .5f;
 			}

@@ -19,7 +19,7 @@ public class EnemyStats : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-		distance = transform.position.magnitude / 100;
+		distance = transform.position.magnitude / 100f;
 		if (distance >= 1)
 			diffMod = distance;
 
@@ -28,11 +28,11 @@ public class EnemyStats : MonoBehaviour {
 			healthRegen = healthRegen * 1.2f;
 			Attack = Attack * 1.5f;
 			attackSpeed = attackSpeed * 1.2f;
-			defense = defense * 1.25f;
+			defense = defense * 1.2f;
 		}
 
 		health = health * diffMod;
-		healthRegen = healthRegen * diffMod;
+		healthRegen = healthRegen * (diffMod * 0.5f);
 		moveSpeed = moveSpeed * diffMod;
 		Attack = Attack * diffMod;
 		attackSpeed = attackSpeed * diffMod;
@@ -44,7 +44,6 @@ public class EnemyStats : MonoBehaviour {
 		if (col.gameObject.tag == "PlayerBullet") {
 			GetComponent<Rigidbody2D>().velocity = Vector3.zero;
 			GetComponent<Rigidbody2D>().angularVelocity = 0;
-			transform.eulerAngles = new Vector3 (0,0,0);
             float dmg = col.gameObject.GetComponent<playerBullet>().damage - defense;
             if (dmg < 1) dmg = 1;
             health -= dmg;
@@ -52,10 +51,11 @@ public class EnemyStats : MonoBehaviour {
 				Destroy(gameObject);
 				playerBullet colBullet = col.gameObject.GetComponent<playerBullet>();
 				colBullet.playerScript.currEXP += (int) experience;
-                if (colBullet.playerScript.currEXP >= colBullet.playerScript.nextLevelEXP)
-                {
-                    colBullet.playerScript.LevelUp();
-                }
+                //if (colBullet.playerScript.currEXP >= colBullet.playerScript.nextLevelEXP)
+                //{
+                //    colBullet.playerScript.level += 1;
+                //    colBullet.playerScript.nextLevelEXP = colBullet.playerScript.nextLevelEXP * 2;
+                //}
 			}
 			Destroy(col.gameObject);
 		}
