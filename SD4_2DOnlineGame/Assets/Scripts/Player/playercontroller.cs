@@ -57,6 +57,10 @@ public class playercontroller : MonoBehaviour {
         MovePlayer();
         ValueCorrection();
 
+		if (Input.GetKeyDown (KeyCode.Escape)) {
+			Application.LoadLevel("MainMenu");
+		}
+
 		if (IFrames >= 0)
 			IFrames -= Time.deltaTime;
 		
@@ -113,7 +117,6 @@ public class playercontroller : MonoBehaviour {
     }
 
 	void OnCollisionEnter2D (Collision2D col) {
-		print (col.gameObject.name);
 		if (col.gameObject.tag == "Enemy") {
 			if (IFrames<= 0) {
 				currVitality -= (int)col.gameObject.GetComponent<EnemyStats>().Attack;

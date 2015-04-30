@@ -49,8 +49,10 @@ public class EnemyStats : MonoBehaviour {
 				Destroy(gameObject);
 				playerBullet colBullet = col.gameObject.GetComponent<playerBullet>();
 				colBullet.playerScript.currEXP += experience;
-				if (colBullet.playerScript.currEXP  >= colBullet.playerScript.nextLevelEXP)
+				if (colBullet.playerScript.currEXP  >= colBullet.playerScript.nextLevelEXP) {
 					colBullet.playerScript.level += 1;
+					colBullet.playerScript.nextLevelEXP = colBullet.playerScript.nextLevelEXP * 2; 
+				}
 			}
 			Destroy(col.gameObject);
 		}
