@@ -108,7 +108,10 @@ public class playercontroller : MonoBehaviour {
         MovePlayer();
         ValueCorrection();
 		if (currVitality<=0)
-			Application.LoadLevel("Splash");
+		{
+			charSave.deleteFile();
+			Application.LoadLevel("MainMenu");
+		}
 
         //if the player presses Escape,
         //then save the player's current stats and return to main menu
