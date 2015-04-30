@@ -42,10 +42,41 @@ public class gameManager : MonoBehaviour {
 		 * 4. Defense
 		 * 5. Move Speed
 		 */
-		int[] stats = {selectedClass, 1, 0, 10, 10, 10, 10, 10};
-		charSave.iarray = stats;
-		charSave.sarray [0] = name;
-		charSave.slot = selectedChar;
-		charSave.saveFile ();
+
+		if (selectedClass == 0) {
+			float[] stats = {selectedClass, 1f, 0f, 15f, 2f, 4f, 10f, 10f, 20f};
+			charSave.iarray = stats;
+			charSave.sarray [0] = name;
+			charSave.slot = selectedChar;
+			charSave.saveFile ();
+		} else
+		if (selectedClass == 1) {
+			float[] stats = {selectedClass, 1f, 0f, 25f, 1f, 4f, 20f, 8f, 20f};
+			charSave.iarray = stats;
+			charSave.sarray [0] = name;
+			charSave.slot = selectedChar;
+			charSave.saveFile ();
+		} else
+			if (selectedClass == 2) {
+			float[] stats = {selectedClass, 1f, 0f, 10f, 6f, 3f, 10f, 12f, 20f};
+			charSave.iarray = stats;
+			charSave.sarray [0] = name;
+			charSave.slot = selectedChar;
+			charSave.saveFile ();
+		} else {
+			float[] stats = {selectedClass, 1f, 0f, 15f, 8f, 10f, 10f, 15f, 20f};
+			charSave.iarray = stats;
+			charSave.sarray [0] = name;
+			charSave.slot = selectedChar;
+			charSave.saveFile ();
+		}
+		
+
+
+
+
+
+
+
 	}
 }

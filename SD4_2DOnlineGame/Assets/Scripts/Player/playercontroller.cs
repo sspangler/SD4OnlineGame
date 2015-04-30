@@ -5,8 +5,8 @@ public class playercontroller : MonoBehaviour {
 
     public int level, nextLevelEXP;
     public int currVitality, vitality;
-	public float healthRegen, currEXP;
-    public int power, atkSpd, def, moveSpd;
+	public float healthRegen, currEXP, atkSpd;
+    public int power, def, moveSpd;
 	public float tempTime;
 	
 	public GameObject bullet;
@@ -41,15 +41,15 @@ public class playercontroller : MonoBehaviour {
 		IFrames = .5f;
 
 	    //Read character stats from save file
-        level = charSave.iarray[1];
-        currEXP = charSave.iarray[2];
+        level = (int)charSave.iarray[1];
+        currEXP =  (int) charSave.iarray[2];
         nextLevelEXP = (int)Mathf.Pow(level, 2f);    //Change to represent experience needed for current level
-        vitality = charSave.iarray[3];
-        currVitality = vitality;
-		power = charSave.iarray[4];
-        atkSpd = charSave.iarray[5];
-        def = charSave.iarray[6];
-        moveSpd = charSave.iarray[7];
+        vitality = (int)charSave.iarray[3];
+        currVitality = (int) vitality;
+		power = (int)charSave.iarray[4];
+        atkSpd = charSave.iarray[5] *.1f;
+        def = (int)charSave.iarray[6];
+        moveSpd = (int)charSave.iarray[7];
 	}
 	
 	// Update is called once per frame
@@ -110,11 +110,19 @@ public class playercontroller : MonoBehaviour {
             if (currEXP > nextLevelEXP)
                 currEXP = (int) prevLevelEXP - currEXP;
 
+
+			    //Change to represent experience needed for current level
+
+
+
+		}
+
             //Increment level and find new amount of experience needed to level up
             level++;
+			
             nextLevelEXP = (int) Mathf.Pow(level, 2f);
         }
-    }
+    
 
 	void OnCollisionEnter2D (Collision2D col) {
 		if (col.gameObject.tag == "Enemy") {

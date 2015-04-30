@@ -59,8 +59,8 @@ public class UI_GameMode : MonoBehaviour {
 
         //Setting text strings to display attack, defense and speed
         statDisplay[0].text = "PWR - " + playerInfo.power;
-        statDisplay[1].text = "AtkSpd - " + playerInfo.atkSpd;
-        statDisplay[2].text = "DEF - " + playerInfo.def;
+        statDisplay[1].text = "AtkDelay - " + playerInfo.atkSpd;
+		statDisplay [2].text = "Health - " + playerInfo.currVitality + " : " + playerInfo.vitality;
         statDisplay[3].text = "SPD - " + playerInfo.moveSpd;
     }
 }

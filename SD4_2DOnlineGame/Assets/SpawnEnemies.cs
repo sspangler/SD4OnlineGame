@@ -13,14 +13,14 @@ public class SpawnEnemies : MonoBehaviour {
 	
 		for (int i = 0; i < minionsToSpawn; i++) {
 			int rand = Random.Range(0,minions.Length);
-			Vector3 randomIn = Random.insideUnitSphere * 500;
+			Vector3 randomIn = Random.insideUnitSphere * 1400;
 			randomIn.z = -1;
 			GameObject clone = (GameObject) Instantiate(minions[rand], randomIn, Quaternion.identity);
 		}
 			
 		for (int i = 0; i < bossesToSpawn; i++) {
 			int rand = Random.Range(0,bosses.Length);
-			Vector3 randomIn = Random.insideUnitSphere * 500;
+			Vector3 randomIn = Random.insideUnitSphere * 1600;
 			randomIn.z = -1;
 			GameObject clone = (GameObject) Instantiate(bosses[rand], randomIn, Quaternion.identity);
 		}

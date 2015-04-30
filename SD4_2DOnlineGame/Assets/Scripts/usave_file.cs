@@ -51,7 +51,7 @@ public class usave_file : MonoBehaviour {
 	public string sNull = "";
 	[Header("The public save data:")]
 	public float[] farray;
-	public int[] iarray;
+	public float[] iarray;
 	public bool[] barray;
 	public Vector3[] varray;
 	public string[] sarray;
@@ -786,7 +786,7 @@ public class usave_file : MonoBehaviour {
 		for(int x=0;x<length;x++)
 		{
 			if(x+where<iarray.Length)
-				array[x] = iarray[where+x];
+				array[x] = (int)iarray[where+x];
 		}
 		return array;
 	}
@@ -859,7 +859,7 @@ public class usave_file : MonoBehaviour {
 	{
 		if(where<iarray.Length && where>=0)
 		{
-			return iarray[where];
+			return (int)iarray[where];
 		}
 		else
 			return iNull;
@@ -906,8 +906,8 @@ public class usave_file : MonoBehaviour {
 
 	public void iarrayResize(int newlength)
 	{
-		int[] oldarray = iarray;
-		iarray = new int[newlength];
+		float[] oldarray = iarray;
+		iarray = new float[newlength];
 		for(int x=0;x<newlength;x++)
 			iarray[x] = iNull;
 		insertAt (0, oldarray);
