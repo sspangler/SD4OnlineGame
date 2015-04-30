@@ -56,6 +56,8 @@ public class playercontroller : MonoBehaviour {
 	void Update () {
         MovePlayer();
         ValueCorrection();
+		if (currVitality<=0)
+			Application.LoadLevel("Splash");
 
 		if (Input.GetKeyDown (KeyCode.Escape)) {
 			float[] stats = {charSave.iarray[0], level, currEXP, vitality, power, atkSpd, def, moveSpd};
