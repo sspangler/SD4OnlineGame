@@ -144,7 +144,7 @@ public class playercontroller : MonoBehaviour {
 				IFrames = .5f;
 			}
 
-		} else if (col.gameObject.tag == "Enemybullet") {
+		} else if (col.gameObject.tag == "EnemyBullet") {
 			if (IFrames <= 0) {
 				currVitality -= (int)col.gameObject.GetComponent<Projectiles>().power;
 				if (currVitality <= 0)
