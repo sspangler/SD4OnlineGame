@@ -44,6 +44,7 @@ public class EnemyStats : MonoBehaviour {
 		if (col.gameObject.tag == "PlayerBullet") {
 			GetComponent<Rigidbody2D>().velocity = Vector3.zero;
 			GetComponent<Rigidbody2D>().angularVelocity = 0;
+			transform.eulerAngles = new Vector3 (0,0,0);
             float dmg = col.gameObject.GetComponent<playerBullet>().damage - defense;
             if (dmg < 1) dmg = 1;
             health -= dmg;
@@ -53,8 +54,6 @@ public class EnemyStats : MonoBehaviour {
 				colBullet.playerScript.currEXP += (int) experience;
                 if (colBullet.playerScript.currEXP >= colBullet.playerScript.nextLevelEXP)
                 {
-                    //colBullet.playerScript.level += 1;
-                    //colBullet.playerScript.nextLevelEXP = colBullet.playerScript.nextLevelEXP * 2;
                     colBullet.playerScript.LevelUp();
                 }
 			}

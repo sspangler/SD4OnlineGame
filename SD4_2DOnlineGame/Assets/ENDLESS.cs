@@ -12,7 +12,7 @@ public class ENDLESS : MonoBehaviour {
 	public int [] z2 = new int [9]; 
 	public int [] z3 = new int [9];
 	public int [] z4 = new int [9];
-	public GameObject[] terrains = GameObject.FindGameObjectsWithTag("Terrain");
+	public GameObject[] terrains;
 	public Renderer [] rend = new Renderer[9];
 	
 	
@@ -23,7 +23,10 @@ public class ENDLESS : MonoBehaviour {
 	
 	
 	void Start () 
-	{	for (int x = 0; x< 9; x++) {
+	{	
+		terrains = GameObject.FindGameObjectsWithTag("Terrain");
+
+		for (int x = 0; x< 9; x++) {
 			
 			//INITIALIZE TILES
 			rend [x] = terrains [x].GetComponent<Renderer> ();
