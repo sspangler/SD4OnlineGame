@@ -122,8 +122,10 @@ public class playercontroller : MonoBehaviour {
 
 		}
 
-            //Increment level and find new amount of experience needed to level up
-            level++;
+			//Increment level and find new amount of experience needed to level up
+			level++;
+			
+		
 			
             nextLevelEXP = (int) Mathf.Pow(level, 2f);
         }
@@ -136,7 +138,7 @@ public class playercontroller : MonoBehaviour {
 				if (currVitality <= 0) {
 					Application.LoadLevel("Spash");		
 				}
-				Destroy(col.gameObject);
+				//Destroy(col.gameObject);
 				IFrames = .5f;
 			}
 

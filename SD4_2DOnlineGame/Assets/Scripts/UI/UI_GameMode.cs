@@ -51,7 +51,7 @@ public class UI_GameMode : MonoBehaviour {
 
     void updatePlayerStats() {
         //Setting HP bar to show remaining HP
-        hpBarColor.fillAmount = playerInfo.currVitality / playerInfo.vitality;
+        hpBarColor.fillAmount = (float) playerInfo.currVitality / playerInfo.vitality;
         
         //Set experience bar to show accumulated exp for the current level
         expBarColor.fillAmount = playerInfo.currEXP / playerInfo.nextLevelEXP;
