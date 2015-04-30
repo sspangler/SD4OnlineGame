@@ -43,7 +43,7 @@ public class EnemyBerserk : MonoBehaviour {
 		if (enemyStats.health <= 4 && !berserk) {
 			berserk = true;
 			speed += .5f;
-			enemyStats.healthRegen += 1f;
+			enemyStats.healthRegen += 0.5f;
 			enemyStats.Attack += 2;
 			enemyStats.defense = 0;
 		}

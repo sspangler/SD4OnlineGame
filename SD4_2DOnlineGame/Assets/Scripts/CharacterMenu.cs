@@ -57,7 +57,7 @@ public class CharacterMenu : MonoBehaviour {
 		if (selectedClass != -1 && characterName!="") {
 			if (GUI.Button (x100Rect (35f, 80f, 30f, 15f), "Create " + gameManagerRef.classes[selectedClass])) {
 				// Create character save file
-				usave_file charSave = gameManagerRef.charSaveObj.GetComponent<usave_file>();
+				//usave_file charSave = gameManagerRef.charSaveObj.GetComponent<usave_file>();
 				gameManagerRef.createCharacter(selectedClass, characterName);
 
 				Application.LoadLevel("MainMenu");

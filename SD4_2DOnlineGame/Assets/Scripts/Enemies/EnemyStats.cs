@@ -44,15 +44,19 @@ public class EnemyStats : MonoBehaviour {
 		if (col.gameObject.tag == "PlayerBullet") {
 			GetComponent<Rigidbody2D>().velocity = Vector3.zero;
 			GetComponent<Rigidbody2D>().angularVelocity = 0;
-			health -= col.gameObject.GetComponent<playerBullet>().damage;
+            float dmg = col.gameObject.GetComponent<playerBullet>().damage - defense;
+            if (dmg < 1) dmg = 1;
+            health -= dmg;
 			if (health <= 0) {
 				Destroy(gameObject);
 				playerBullet colBullet = col.gameObject.GetComponent<playerBullet>();
-				colBullet.playerScript.currEXP += experience;
-				if (colBullet.playerScript.currEXP  >= colBullet.playerScript.nextLevelEXP) {
-					colBullet.playerScript.level += 1;
-					colBullet.playerScript.nextLevelEXP = colBullet.playerScript.nextLevelEXP * 2; 
-				}
+				colBullet.playerScript.currEXP += (int) experience;
+                if (colBullet.playerScript.currEXP >= colBullet.playerScript.nextLevelEXP)
+                {
+                    //colBullet.playerScript.level += 1;
+                    //colBullet.playerScript.nextLevelEXP = colBullet.playerScript.nextLevelEXP * 2;
+                    colBullet.playerScript.LevelUp();
+                }
 			}
 			Destroy(col.gameObject);
 		}
