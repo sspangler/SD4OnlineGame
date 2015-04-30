@@ -44,6 +44,7 @@ public class EnemyStats : MonoBehaviour {
 		if (col.gameObject.tag == "PlayerBullet") {
 			GetComponent<Rigidbody2D>().velocity = Vector3.zero;
 			GetComponent<Rigidbody2D>().angularVelocity = 0;
+			transform.eulerAngles = Vector3.zero;
             float dmg = col.gameObject.GetComponent<playerBullet>().damage - defense;
             if (dmg < 1) dmg = 1;
             health -= dmg;
