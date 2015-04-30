@@ -27,8 +27,7 @@ public class mainMenu : MonoBehaviour {
 		for(int x=0;x<storedNames.Length;x++)
 		{
 			filledSlot = gameManagerRef.charSaveObj.GetComponent<usave_file>().ifSlot(x+1);
-			if(filledSlot)
-			{
+			if(filledSlot) {
 				charSave.slot = x+1;
 				charSave.loadFile();
 				storedNames[x] = charSave.sarray[0];
@@ -94,8 +93,11 @@ public class mainMenu : MonoBehaviour {
 			{
 				GUI.Label(statRects[x], statStrings[x]);
 			}
-			if(GUI.Button(x100Rect(70f, 70f, 30f, 20f), "Find Server"))
+			if(GUI.Button(x100Rect(70f, 70f, 30f, 10f), "Find Server"))
 				Application.LoadLevel ("ServerSearch");
+
+			if(GUI.Button(x100Rect(70f, 80f, 30f, 10f), "Start Solo"))
+				Application.LoadLevel ("LargerTerrainTest");
 		}
 	}
 

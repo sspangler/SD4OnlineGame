@@ -3,9 +3,9 @@ using System.Collections;
 
 public class playercontroller : MonoBehaviour {
 
-    public int level, currEXP, nextLevelEXP;
+    public int level, nextLevelEXP;
     public int currVitality, vitality;
-    public float healthRegen;
+	public float healthRegen, currEXP;
     public int power, atkSpd, def, moveSpd;
 	public float tempTime;
 	
@@ -62,19 +62,16 @@ public class playercontroller : MonoBehaviour {
 		
 		tempTime += Time.deltaTime;
 		
-		if (tempTime >= atkSpd)
-		{
-			if (Input.GetMouseButton (0)) 	
-			{
-				GameObject clone = (GameObject) Instantiate (bullet, transform.position, Quaternion.identity);
-				
+		if (tempTime >= atkSpd) {
+			if (Input.GetMouseButton (0)) {
+				GameObject clone = (GameObject) Instantiate (bullet, transform.position, Quaternion.identity);	
 				tempTime = 0;
 			}
 		}
 	}
 
-    void MovePlayer()
-    {
+    void MovePlayer() {
+
         //Read horizontal input (-1 for left, 1 for right, 0 for none)
         float horizontal = Input.GetAxis("Horizontal");
 
@@ -115,15 +112,13 @@ public class playercontroller : MonoBehaviour {
         }
     }
 
-
-
 	void OnCollisionEnter2D (Collision2D col) {
 		print (col.gameObject.name);
 		if (col.gameObject.tag == "Enemy") {
 			if (IFrames<= 0) {
 				currVitality -= (int)col.gameObject.GetComponent<EnemyStats>().Attack;
 				if (currVitality <= 0) {
-					Application.LoadLevel("Spash");			
+					Application.LoadLevel("Spash");		
 				}
 				Destroy(col.gameObject);
 				IFrames = .5f;
@@ -141,5 +136,4 @@ public class playercontroller : MonoBehaviour {
 			}
 		}
 	}
-
 }
