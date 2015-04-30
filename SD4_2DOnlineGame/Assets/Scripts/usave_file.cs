@@ -962,4 +962,9 @@ public class usave_file : MonoBehaviour {
 	void OnInspectorGUI() {
 
 	}
+
+	public void deleteFile () {
+		//removes the file
+		File.Delete (datapath () + concatenate ());
+	}
 }
