@@ -58,6 +58,11 @@ public class playercontroller : MonoBehaviour {
         ValueCorrection();
 
 		if (Input.GetKeyDown (KeyCode.Escape)) {
+			float[] stats = {charSave.iarray[0], level, currEXP, vitality, power, atkSpd, def, moveSpd};
+			charSave.iarray = stats;
+			charSave.sarray [0] = name;
+			charSave.slot = (int) charSave.iarray[0];
+			charSave.saveFile ();
 			Application.LoadLevel("MainMenu");
 		}
 
