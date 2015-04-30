@@ -83,7 +83,7 @@ public class mainMenu : MonoBehaviour {
 			// Draw "Selected Character area
 			Rect[] statRects = rectGroup(7, 70, 10, 100, 60, 5);
 			string[] statStrings = {storedNames[gameManagerRef.selectedChar-1],
-				"Lvl" + charSave.iarray[1].ToString() + " " + gameManagerRef.classes[(int)charSave.iarray[0]],
+				"Lvl: " + charSave.iarray[1].ToString() + " " + gameManagerRef.classes[(int)charSave.iarray[0]],
 				"Vitality: " + charSave.iarray[3].ToString(), 
 				"Power: " + charSave.iarray[4].ToString(), 
 				"Attack Speed: " + charSave.iarray[5].ToString(), 
